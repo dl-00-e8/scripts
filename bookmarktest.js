@@ -1,0 +1,1 @@
+javascript:problemNum = prompt();  moveLocation = 'https://www.acmicpc.net/problem/' + problemNum; window.location.href = moveLocation;
