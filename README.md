@@ -16,3 +16,6 @@
 
 #### [홈페이지 자동 새로고침](https://github.com/dl-00-e8/scripts/blob/master/refresh.js)
 : 특정 사이트 지정 기간마다 자동 새로고침 진행 (주로 관제용)
+
+#### [Solved.ac 랜덤 문제 뽑기](https://github.com/dl-00-e8/scripts/blob/master/solved.py)
+: Solved.ac에서 풀고자 하는 문제를 뽑을 때 사용하는 GUI
