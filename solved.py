@@ -8,56 +8,89 @@ __ver__ = "2022. 12. 31"
 
 # GUI Functions
 def getId():
-    id = "any"
+    id = inputId.get("1.0", "end-1c")
 
     return id
 
 
 def getPw():
-    pw = "any"
+    pw = inputPw.get("1.0", "end-1c")
 
     return pw
 
 
-def setNum(num):
-    pass
+def changeText(textType):
+    if textType == 1:
+        nowText.set("ID ë˜ëŠ” PWê°€ ì…ë ¥ë˜ì–´ ìˆì§€ ì•ŠìŠµë‹ˆë‹¤.")
+    elif textType == 2:
+        nowText.set("ID ë˜ëŠ” PWê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤.")
+    elif textType == 3:
+        nowText.set("ì¡°ê±´ì— í•´ë‹¹í•˜ëŠ” ë¬¸ì œê°€ ì—†ìŠµë‹ˆë‹¤.")
+
+
+def findNum(tag, tier):
+    
+
+    return 0
 
 
 def process():
     id = getId()
     pw = getPw()
 
-    num = 0
+    if id == '' or pw == '':
+        changeText(1)
+    else:
+        num = findNum(0, 0)
 
-    setNum(num)
+        if num == '-1': 
+            changeText(2)
+        else:
+            inputProblemNum.delete("1.0", "end")
+            inputProblemNum.insert("1.0", num)
 
-
+    
 # GUI Setting
 gui = Tk()
 
-gui.title("Solved.ac ·£´ı ¹®Á¦ ÃßÃâ " + __ver__)
-gui.geometry('400x600+100+100')
+gui.title("Solved.ac ëœë¤ ë¬¸ì œ ì¶”ì¶œ " + __ver__)
+gui.geometry('400x200+100+100')
 gui.resizable(False, False)
 
-informId = Label(gui, text = "ID ÀÔ·Â", font = ('Çö´ëÇÏ¸ğ´Ï L', 14, 'bold'))
-infromId.grid(row = 0, column = 0, padx = 10)
+informId = Label(gui, text = "ID ì…ë ¥", font = ('í˜„ëŒ€í•˜ëª¨ë‹ˆ L', 12, 'bold'), width = 5)
+informId.grid(row = 0, column = 0, padx = 10)
 
-inputId = Text(gui, width = 50, height = 10)
-inputId.configure(font = ('Çö´ëÇÏ¸ğ´Ï L', 10))
-inputId.grid(row = 1, column = 0)
+inputId = Text(gui, width = 20, height = 2)
+inputId.configure(font = ('í˜„ëŒ€í•˜ëª¨ë‹ˆ L', 10))
+inputId.grid(row = 0, column = 1)
 
-informPw = Label(gui, text = "PW ÀÔ·Â", font = ('Çö´ëÇÏ¸ğ´Ï L', 14, 'bold'))
-infromPw.grid(row = 0, column = 0, padx = 10)
+informPw = Label(gui, text = "PW ì…ë ¥", font = ('í˜„ëŒ€í•˜ëª¨ë‹ˆ L', 12, 'bold'))
+informPw.grid(row = 1, column = 0, padx = 10)
 
-inputPw = Text(gui, width = 50, height = 10)
-inputPw.configure(font = ('Çö´ëÇÏ¸ğ´Ï L', 10))
-inputPw.grid(row = 1, column = 0)
+inputPw = Text(gui, width = 20, height = 2)
+inputPw.configure(font = ('í˜„ëŒ€í•˜ëª¨ë‹ˆ L', 10))
+inputPw.grid(row = 1, column = 1)
 
-informProblemNum = Label(gui, text = "¹®Á¦ ¹øÈ£ Ãâ·Â", font = ('Çö´ëÇÏ¸ğ´Ï L', 14, 'bold'))
-infromProblemNum.grid(row = 0, column = 0, padx = 10)
+informCondition = Label(gui, text = "ë¬¸ì œ íƒìƒ‰ ì¡°ê±´ ì…ë ¥", font = ('í˜„ëŒ€í•˜ëª¨ë‹ˆ L', 12, 'bold'))
+informCondition.grid(row = 2, column = 0, padx = 10)
 
-inputProblemNum = Text(gui, width = 50, height = 10)
-inputProblemNum.configure(font = ('Çö´ëÇÏ¸ğ´Ï L', 10))
-inputProblemNum.grid(row = 1, column = 0)
+inputCondition = Text(gui, width = 20, height = 2)
+inputCondition.configure(font = ('í˜„ëŒ€í•˜ëª¨ë‹ˆ L', 10))
+inputCondition.grid(row = 2, column = 1)
+
+informProblemNum = Label(gui, text = "ë¬¸ì œ ë²ˆí˜¸ ì¶œë ¥", font = ('í˜„ëŒ€í•˜ëª¨ë‹ˆ L', 12, 'bold'))
+informProblemNum.grid(row = 3, column = 0, padx = 10)
+
+inputProblemNum = Text(gui, width = 20, height = 2)
+inputProblemNum.configure(font = ('í˜„ëŒ€í•˜ëª¨ë‹ˆ L', 10))
+inputProblemNum.grid(row = 3, column = 1)
+
+nowText = StringVar()
+nowText.set("")
+informText = Label(gui, textvariable = nowText, font = ('í˜„ëŒ€í•˜ëª¨ë‹ˆ L', 8))
+informText.grid(row = 4)
+
+button = Button(gui, text = "Find", command = process)
+button.grid(row = 5)
 
 gui.mainloop()
